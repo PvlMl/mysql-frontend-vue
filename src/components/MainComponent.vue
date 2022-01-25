@@ -2,25 +2,15 @@
   <div>
     <div class="d-flex" style="justify-content: space-between">
       <p>Фильтрация поля:</p>
-      <select class="mb-3" v-model="selectedField">
-        <option
-          v-for="option in fieldOptions"
-          :key="option.text"
-          :value="option.value"
-        >
-          {{ option.text }}
-        </option>
-      </select>
+      <my-select
+        :options="fieldOptions"
+        @change-select="selectedField = $event"
+      />
       <p>По условию:</p>
-      <select class="mb-3" v-model="selectedСondition">
-        <option
-          v-for="option in conditionOptions"
-          :key="option.text"
-          :value="option.value"
-        >
-          {{ option.text }}
-        </option>
-      </select>
+      <my-select
+        :options="conditionOptions"
+        @change-select="selectedСondition = $event"
+      />
       <input
         type="text"
         class="mb-3"
@@ -66,8 +56,11 @@
 
 <script>
 import axios from "axios";
+import MySelect from "./MySelect";
 export default {
-  name: "HelloWorld",
+  components: {
+    MySelect,
+  },
   data() {
     return {
       items: [],
@@ -91,6 +84,9 @@ export default {
     };
   },
   methods: {
+    some(n) {
+      alert(n);
+    },
     sortByName() {
       this.paginatedItems.sort(function (a, b) {
         if (a.title > b.title) {

@@ -1,17 +1,20 @@
 <template>
-  <HelloWorld />
+  <main-component />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainComponent from './components/MainComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainComponent
   }
 }
 </script>
 
 <style>
+* {
+  margin: 10px
+}
 </style>
